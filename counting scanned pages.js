@@ -28,3 +28,13 @@ const defaultMetaTags = `
 
 const BROWSER_BOT = 0;
 const SLACK_BOT = 1;
+
+
+Meteor.startup(() => { 
+  
+    onPageLoad(sink => {  
+        var url = sink.request.url.search;     
+        if(url == null){
+            sink.appendToHead(defaultMetaTags); 
+            return;
+        } 
